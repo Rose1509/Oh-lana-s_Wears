@@ -1,5 +1,9 @@
 package com.clothesapp.view;
 
+import com.clothesapp.controller.algorithms.BinarySearch;
+import com.clothesapp.controller.algorithms.InsertionSort;
+import com.clothesapp.controller.algorithms.MergeSort;
+import com.clothesapp.controller.algorithms.SelectionSort;
 import com.clothesapp.model.ClothesModel;
 import com.clothesapp.util.Validationutil;
 import java.util.ArrayList;
@@ -9,20 +13,16 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import java.util.Iterator;
 
-
-
 /**
  *
  * @author Rose khatiwada
  * @ LMU ID: 23048677
  */
 public class OhlanasWears extends javax.swing.JFrame {
+
     private ArrayList<ClothesModel> clothesList = new ArrayList();
     private java.awt.CardLayout cardLayout;
     private DefaultTableModel clothesTableModel;
-
-
-
 
     /**
      * Creates new form ClothesApp
@@ -61,6 +61,9 @@ public class OhlanasWears extends javax.swing.JFrame {
         lbltabClothes = new javax.swing.JLabel();
         jScrollPaneClothestable = new javax.swing.JScrollPane();
         tblClothes = new javax.swing.JTable();
+        txtFldSearch = new javax.swing.JTextField();
+        jCBclothes = new javax.swing.JComboBox<>();
+        lblsearch = new javax.swing.JLabel();
         pnlAdminControl = new javax.swing.JPanel();
         lblProductManagement = new javax.swing.JLabel();
         txtFldProductCode = new javax.swing.JTextField();
@@ -280,6 +283,32 @@ public class OhlanasWears extends javax.swing.JFrame {
             tblClothes.getColumnModel().getColumn(5).setResizable(false);
         }
 
+        txtFldSearch.setBackground(new java.awt.Color(204, 204, 204));
+        txtFldSearch.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
+        txtFldSearch.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51), 2), "Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(51, 51, 51))); // NOI18N
+        txtFldSearch.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        txtFldSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFldSearchActionPerformed(evt);
+            }
+        });
+
+        jCBclothes.setBackground(new java.awt.Color(102, 102, 102));
+        jCBclothes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Price(Asc)", "Price(Des)", "Name(A-Z)", "Name(Z-A)", "Code(Asc)", "Code(Des)", " ", " " }));
+        jCBclothes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBclothesActionPerformed(evt);
+            }
+        });
+
+        lblsearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/cothesapp/resources/Screenshot 2025-01-03 220835.png"))); // NOI18N
+        lblsearch.setText("jLabel1");
+        lblsearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblsearchMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlClothesLayout = new javax.swing.GroupLayout(pnlClothes);
         pnlClothes.setLayout(pnlClothesLayout);
         pnlClothesLayout.setHorizontalGroup(
@@ -287,13 +316,18 @@ public class OhlanasWears extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlClothesLayout.createSequentialGroup()
                 .addGroup(pnlClothesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tabPaneClothes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
-                    .addGroup(pnlClothesLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlClothesLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(pnlClothesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pnlClothesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPaneClothestable)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlClothesLayout.createSequentialGroup()
+                            .addGroup(pnlClothesLayout.createSequentialGroup()
                                 .addComponent(lbltabClothes, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCBclothes, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtFldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(5, 5, 5)
+                                .addComponent(lblsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         pnlClothesLayout.setVerticalGroup(
@@ -301,9 +335,14 @@ public class OhlanasWears extends javax.swing.JFrame {
             .addGroup(pnlClothesLayout.createSequentialGroup()
                 .addComponent(tabPaneClothes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbltabClothes, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlClothesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlClothesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtFldSearch)
+                        .addComponent(lbltabClothes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCBclothes))
+                    .addComponent(lblsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneClothestable, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPaneClothestable, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1053,8 +1092,8 @@ public class OhlanasWears extends javax.swing.JFrame {
         pwdFldLogin.setForeground(new java.awt.Color(102, 102, 102));
         pwdFldLogin.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(204, 204, 204))); // NOI18N
 
-        lblLoginError.setForeground(new java.awt.Color(255, 255, 255));
-        lblLoginError.setText("jLabel1");
+        lblLoginError.setBackground(new java.awt.Color(204, 0, 0));
+        lblLoginError.setForeground(new java.awt.Color(204, 0, 0));
 
         javax.swing.GroupLayout pnlLoginScreenLayout = new javax.swing.GroupLayout(pnlLoginScreen);
         pnlLoginScreen.setLayout(pnlLoginScreenLayout);
@@ -1074,7 +1113,7 @@ public class OhlanasWears extends javax.swing.JFrame {
                                 .addComponent(lblLoginForgotPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginScreenLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGap(0, 34, Short.MAX_VALUE)
                                 .addGroup(pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginScreenLayout.createSequentialGroup()
                                         .addComponent(lblLoginTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1085,14 +1124,14 @@ public class OhlanasWears extends javax.swing.JFrame {
                                             .addComponent(txtFldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lblLoginSubTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(28, 28, 28))
-                                    .addComponent(lblLoginError, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                    .addComponent(lblLoginError, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
         );
         pnlLoginScreenLayout.setVerticalGroup(
             pnlLoginScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlLoginLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlLoginScreenLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(lblLoginError, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(lblLoginError, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblLoginTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1181,13 +1220,13 @@ public class OhlanasWears extends javax.swing.JFrame {
     }
 
     //Method to initialize data, including Clothes list and table
-    private void initializeData(){
+    private void initializeData() {
         clothesList = new ArrayList();
-        registerClothes(new ClothesModel(1234, "Half Shirt", "Shirt", "Blue", 15, 25000), true);
-        registerClothes(new ClothesModel(1589, "Half Pant", "Pant", "Black", 20, 40000), true);
-        registerClothes(new ClothesModel(4567, "Off-sholder Sweater", "Sweater", "Red", 5, 15000), true);
-        registerClothes(new ClothesModel(8974, "Grunch pant", "Pant", "Blue", 10, 20000), true);
-        registerClothes(new ClothesModel(6986, "Over-size hoodie", "Hoodie", "Brown", 8, 19000), true);
+        registerClothes(new ClothesModel(1234, "Half Shirt", "Shirt", "Blue", 15, 20000), true);
+        registerClothes(new ClothesModel(1589, "Half Pant", "Pants", "Black", 20, 44000), true);
+        registerClothes(new ClothesModel(4567, "Off-sholder Sweater", "Sweater", "Red", 5, 19000), true);
+        registerClothes(new ClothesModel(8974, "Grunch pant", "Pants", "Blue", 10, 8000), true);
+        registerClothes(new ClothesModel(6986, "Over-size hoodie", "Hoodie", "Brown", 8, 60000), true);
     }
 
     // Method to simulate loading progress
@@ -1221,6 +1260,7 @@ public class OhlanasWears extends javax.swing.JFrame {
         cardLayout.show(getContentPane(), screenName);
     }
 
+
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // Get the username and password input
         String username = txtFldUserName.getText();
@@ -1253,43 +1293,103 @@ public class OhlanasWears extends javax.swing.JFrame {
 
 
     private void txtFldProductNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldProductNameActionPerformed
-        // Retrieve the text from the product name text field
-        String productName = txtFldProductName.getText();
 
-        // Check if the product name is empty
-        if (productName.isEmpty()) {
-            // Show an error message if no input is provided
-            JOptionPane.showMessageDialog(this, "Product name cannot be empty!", "Input Error", JOptionPane.WARNING_MESSAGE);
-        } else if (productName.length() < 3) {
-            // Show a warning if the product name is too short
-            JOptionPane.showMessageDialog(this, "Product name must be at least 3 characters long.", "Input Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-            // Display a success message for valid input
-            JOptionPane.showMessageDialog(this, "Product '" + productName + "' added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        }
     }//GEN-LAST:event_txtFldProductNameActionPerformed
+
+    // Helper method to refresh the table model
+    private void updateTableModel() {
+        DefaultTableModel model = (DefaultTableModel) tblClothes.getModel();
+        model.setRowCount(0); // Clear existing rows
+
+        // Populate the table with updated data
+        for (ClothesModel product : clothesList) {
+            model.addRow(new Object[]{
+                product.getProductcode(),
+                product.getProductname(),
+                product.getProducttype(),
+                product.getColor(),
+                product.getStock(),
+                product.getPrice()
+            });
+        }
+    }
 
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
+        // Check if a row is selected
         int selectedRow = tblClothes.getSelectedRow();
-        if(selectedRow == -1) {
+        if (selectedRow == -1) {
+            // Display warning if no row is selected
             JOptionPane.showMessageDialog(pnlAdminControl, "Please select a clothes item to update.", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;}
-        try {
-            int productCode = Integer.parseInt(txtFldProductCode.getText());
-            String productName = txtFldProductName.getText();
-            String productType = txtFldProductType.getText();
-            String color = txtFldColor.getText();
-            int stock = Integer.parseInt(txtFldStock.getText());
-            double price = Double.parseDouble(txtFldPrice.getText());
+            return;
+        }
 
+        // Retrieve input values from text fields
+        String productCodeStr = txtFldProductCode.getText();
+        String productName = txtFldProductName.getText();
+        String productType = txtFldProductType.getText();
+        String color = txtFldColor.getText();
+        String stockStr = txtFldStock.getText();
+        String priceStr = txtFldPrice.getText();
+
+        // Check if any field is empty
+        if (productCodeStr.isEmpty() || productName.isEmpty() || productType.isEmpty() || color.isEmpty() || stockStr.isEmpty() || priceStr.isEmpty()) {
+            JOptionPane.showMessageDialog(pnlAdminControl, "Please enter all details of clothes.", "Information", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        try {
+            // Initialize the validation utility
+            Validationutil validator = new Validationutil();
+
+            // Validate product code
+            if (!validator.isValidProductCode(productCodeStr)) {
+                JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Product Code! Must be exactly 4 digits.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Validate product name
+            if (!validator.isValidProductName(productName)) {
+                JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Product Name! Must contain only letters and spaces.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Validate product type
+            if (!validator.isValidProductType(productType)) {
+                JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Product Type! Must be one of: Shirt, Pants, Dress, Jacket, Sweater.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Validate color
+            if (!validator.isValidColor(color)) {
+                JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Color! Must contain only letters.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Validate stock
+            if (!validator.isValidStock(stockStr)) {
+                JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Stock! Must be a number between 0 and 1000.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Validate price
+            if (!validator.isValidPrice(priceStr)) {
+                JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Price! Must be between 0.01 and 10000.00.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Parse validated inputs into appropriate data types
+            int productCode = Integer.parseInt(productCodeStr);
+            int stock = Integer.parseInt(stockStr);
+            double price = Double.parseDouble(priceStr);
+
+            // Create a new ClothesModel object with updated details
             ClothesModel updatedClothes = new ClothesModel(productCode, productName, productType, color, stock, price);
 
-            // Update clothesList
+            // Update the selected item in the clothesList
             clothesList.set(selectedRow, updatedClothes);
 
-            // Update table
+            // Update the table with new values
             DefaultTableModel model = (DefaultTableModel) tblClothes.getModel();
             model.setValueAt(productCode, selectedRow, 0);
             model.setValueAt(productName, selectedRow, 1);
@@ -1298,35 +1398,46 @@ public class OhlanasWears extends javax.swing.JFrame {
             model.setValueAt(stock, selectedRow, 4);
             model.setValueAt(price, selectedRow, 5);
 
+            // Show a success message
             JOptionPane.showMessageDialog(pnlAdminControl, "Clothes updated successfully!", "Update Success", JOptionPane.INFORMATION_MESSAGE);
+
+            // Clear the input fields
             clearFields();
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
+            // Handle invalid number input
             JOptionPane.showMessageDialog(pnlAdminControl, "Invalid input. Please check your entries.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     Validationutil validator = new Validationutil();
+
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {
         // Prompt the user for the product code to delete
         String deleteCode = JOptionPane.showInputDialog(pnlMainScreen, "Enter product Code:");
+
+        //check if the input is empty
         if (deleteCode == null || deleteCode.isEmpty()) {
+            //display an error message
             JOptionPane.showMessageDialog(pnlMainScreen, "Empty box. Please enter a value.", "Alert", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
                 int rcode = Integer.parseInt(deleteCode);
-                boolean found = false; // Flag to check if product exists
+                boolean found = false; // to check if product exists
 
                 // Using iterator to safely remove from the list
-                for (Iterator<ClothesModel> iterator = clothesList.iterator(); iterator.hasNext(); ) {
+                for (Iterator<ClothesModel> iterator = clothesList.iterator(); iterator.hasNext();) {
                     ClothesModel product = iterator.next();
+
+                    //check if the product code matches the entered code
                     if (product.getProductcode() == rcode) {
-                        iterator.remove(); // Remove the product safely
+                        iterator.remove(); // Remove the product 
                         JOptionPane.showMessageDialog(pnlMainScreen, "Successfully removed product!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                        found = true; // Mark as found
+                        found = true;
                         break; // Exit loop after removal
                     }
                 }
 
+                //Error message if product doesnot exist
                 if (!found) {
                     JOptionPane.showMessageDialog(pnlMainScreen, "Product not found!", "Alert", JOptionPane.ERROR_MESSAGE);
                 } else {
@@ -1339,38 +1450,16 @@ public class OhlanasWears extends javax.swing.JFrame {
         }
     }
 
-    // Helper method to refresh the table model
-    private void updateTableModel() {
-        DefaultTableModel model = (DefaultTableModel) tblClothes.getModel();
-        model.setRowCount(0); // Clear existing rows
-
-        // Populate the table with updated data
-        for (ClothesModel product : clothesList) {
-            model.addRow(new Object[] {
-                    product.getProductcode(),
-                    product.getProductname(),
-                    product.getProducttype(),
-                    product.getColor(),
-                    product.getStock(),
-                    product.getPrice()
-            });
-        }
-    }
-
-
-
-  //Method to add clothes and populate the table  
+    //Method to add clothes and populate the table  
     private void registerClothes(ClothesModel clothes, boolean update) {
         clothesList.add(clothes);
         DefaultTableModel model = (DefaultTableModel) tblClothes.getModel();
         model.addRow(new Object[]{
             clothes.getProductcode(), clothes.getProductname(), clothes.getProducttype(),
-            clothes.getColor(), clothes.getStock(), clothes.getPrice()          
+            clothes.getColor(), clothes.getStock(), clothes.getPrice()
         });
 
     }
-
-
 
     private void clearFields() {
         txtFldProductCode.setText("");
@@ -1382,7 +1471,7 @@ public class OhlanasWears extends javax.swing.JFrame {
     }
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
+        // Retrieve input values from text fields
         String productcode = txtFldProductCode.getText();
         String productname = txtFldProductName.getText();
         String producttype = txtFldProductType.getText();
@@ -1390,43 +1479,53 @@ public class OhlanasWears extends javax.swing.JFrame {
         String stock = txtFldStock.getText();
         String price = txtFldPrice.getText();
 
+        // Check if any field is empty
         if (productcode.isEmpty() || productname.isEmpty() || producttype.isEmpty() || color.isEmpty() || stock.isEmpty() || price.isEmpty()) {
+            // Display an information message if any field is left blank
             JOptionPane.showMessageDialog(pnlAdminControl, "Please enter all details of clothes.", "Information", JOptionPane.INFORMATION_MESSAGE);
         } else {
             try {
+                // Initialize the validation utility
                 Validationutil validator = new Validationutil();
 
                 // Validate each field using the validator
+                // Validate the product code
                 if (!validator.isValidProductCode(productcode)) {
                     JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Product Code! Must be exactly 4 digits.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
+                // Validate the product name
                 if (!validator.isValidProductName(productname)) {
                     JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Product Name! Must contain only letters and spaces.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
+                // Validate the product type
                 if (!validator.isValidProductType(producttype)) {
                     JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Product Type! Must be one of: Shirt, Pants, Dress, Jacket, Sweater.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
+                //validate the color
                 if (!validator.isValidColor(color)) {
                     JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Color! Must contain only letters.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
+                //validate the stock
                 if (!validator.isValidStock(stock)) {
                     JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Stock! Must be a number between 0 and 1000.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
+                //validate the price
                 if (!validator.isValidPrice(price)) {
                     JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Price! Must be between 0.01 and 10000.00.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
+                // Parse validated inputs to appropriate data types
                 int pcode = Integer.parseInt(productcode);
                 int pstock = Integer.parseInt(stock);
                 double pprice = Double.parseDouble(price);
@@ -1441,24 +1540,23 @@ public class OhlanasWears extends javax.swing.JFrame {
                 }
 
                 // Display pop up box if clothes already exists
-                if(clothesExists){
+                if (clothesExists) {
                     JOptionPane.showMessageDialog(pnlAdminControl, "The Clothes already exists.", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
                     //create new clothesModel Object
-                    ClothesModel clothes = new ClothesModel(pcode,productname, producttype, color, pstock,pprice);
+                    ClothesModel clothes = new ClothesModel(pcode, productname, producttype, color, pstock, pprice);
                     registerClothes(clothes, false);
 
+                    // Display success message
+                    JOptionPane.showMessageDialog(pnlAdminControl, "Clothes added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 }
 
-            }catch (NumberFormatException n){
+            } catch (NumberFormatException n) {
                 JOptionPane.showMessageDialog(pnlAdminControl, "Invalid input. Please enter valid numbers.", "Information", JOptionPane.INFORMATION_MESSAGE);
 
             }
 
         }
-
-
-
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void txtFldProductCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldProductCodeActionPerformed
@@ -1481,6 +1579,89 @@ public class OhlanasWears extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFldPriceActionPerformed
 
+    private void txtFldSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFldSearchActionPerformed
+
+    private void loadListToTable(ArrayList<ClothesModel> list, javax.swing.JTable table) {
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) table.getModel();
+
+        model.setRowCount(0);//clear existing rows
+
+        for (ClothesModel item : list) {
+            Object[] row = new Object[]{
+                item.getProductcode(),
+                item.getProductname(),
+                item.getProducttype(),
+                item.getColor(),
+                item.getStock(),
+                item.getPrice(),};
+            model.addRow(row);
+        }
+
+    }
+
+    private void jCBclothesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBclothesActionPerformed
+        // TODO add your handling code here:
+        SelectionSort sort = new SelectionSort();
+        MergeSort mergeSort = new MergeSort();
+        InsertionSort insertionSort = new InsertionSort();
+        String selected = (String) jCBclothes.getSelectedItem(); // Get selected option
+
+        // Handle sorting based on selection
+        if ("Name(A-Z)".equals(selected)) {
+            // Sort by Name (A-Z)ascending
+            ArrayList<ClothesModel> sortedList = sort.sortByName(clothesList, true);
+            loadListToTable(sortedList, tblClothes);
+
+        } else if ("Name(Z-A)".equals(selected)) {
+            // Sort by Name (Z-A)descending
+            ArrayList<ClothesModel> sortedList = sort.sortByName(clothesList, false);
+            loadListToTable(sortedList, tblClothes);
+
+        } else if ("Price(Asc)".equals(selected)) {
+            // Sort by Price (Low to High)
+            ArrayList<ClothesModel> sortedList = mergeSort.sortByPrice(clothesList, true);
+            loadListToTable(sortedList, tblClothes);
+
+        } else if ("Price(Des)".equals(selected)) {
+            // Sort by Price (High to Low)
+            ArrayList<ClothesModel> sortedList = mergeSort.sortByPrice(clothesList, false);
+            loadListToTable(sortedList, tblClothes);
+
+        } else if ("Code(Asc)".equals(selected)) {
+            // Sort by Product Code (Ascending)
+            ArrayList<ClothesModel> sortedList = insertionSort.sortByCode(clothesList, true);
+            loadListToTable(sortedList, tblClothes);
+
+        } else if ("Code(Des)".equals(selected)) {
+            // Sort by Product Code (Descending)
+            ArrayList<ClothesModel> sortedList = insertionSort.sortByCode(clothesList, false);
+            loadListToTable(sortedList, tblClothes);
+        }
+    }//GEN-LAST:event_jCBclothesActionPerformed
+
+
+    private void lblsearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblsearchMouseClicked
+        // TODO add your handling code here:
+        SelectionSort sort = new SelectionSort();
+        List<ClothesModel> sortedList = sort.sortByName(clothesList, true);
+        BinarySearch search = new BinarySearch();
+
+        ClothesModel searchedModel = search.searchByNameProduct(txtFldSearch.getText(), sortedList, 0, sortedList.size() - 1);
+        if (searchedModel != null) {
+            JOptionPane.showMessageDialog(pnlAdminControl,
+                    "Product Code:" + searchedModel.getProductcode() + "\n"
+                    + "Product Name:" + searchedModel.getProductname() + "\n"
+                    + "Product Type:" + searchedModel.getProducttype() + "\n"
+                    + "Color:" + searchedModel.getColor() + "\n"
+                    + "Stock:" + searchedModel.getStock() + "n"
+                    + "Price:" + searchedModel.getPrice());
+        } else {
+            JOptionPane.showMessageDialog(pnlAdminControl, "Product doesn't exist.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_lblsearchMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1519,9 +1700,6 @@ public class OhlanasWears extends javax.swing.JFrame {
     }
 
 
-
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AboutUs;
     private javax.swing.JPanel ContactUs;
@@ -1535,6 +1713,7 @@ public class OhlanasWears extends javax.swing.JFrame {
     private javax.swing.JLabel iblLoginslogan;
     private javax.swing.JLabel iblLoginsloganlook;
     private javax.swing.JLabel iblloginimage;
+    private javax.swing.JComboBox<String> jCBclothes;
     private javax.swing.JScrollPane jScrollPaneClothestable;
     private javax.swing.JLabel lblClosed;
     private javax.swing.JLabel lblContactinfo;
@@ -1583,6 +1762,7 @@ public class OhlanasWears extends javax.swing.JFrame {
     private javax.swing.JLabel lblpartnershipmail;
     private javax.swing.JLabel lblphone;
     private javax.swing.JLabel lblphonelogo;
+    private javax.swing.JLabel lblsearch;
     private javax.swing.JLabel lblsecondline;
     private javax.swing.JLabel lblsecondparagraph;
     private javax.swing.JLabel lblsecparagLinethree;
@@ -1615,6 +1795,7 @@ public class OhlanasWears extends javax.swing.JFrame {
     private javax.swing.JTextField txtFldProductCode;
     private javax.swing.JTextField txtFldProductName;
     private javax.swing.JTextField txtFldProductType;
+    private javax.swing.JTextField txtFldSearch;
     private javax.swing.JTextField txtFldStock;
     private javax.swing.JTextField txtFldUserName;
     // End of variables declaration//GEN-END:variables

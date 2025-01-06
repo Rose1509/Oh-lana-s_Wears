@@ -12,6 +12,5 @@ package com.clothesapp.controller.datastructure;
 public class CustomQueue {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
     }
 }

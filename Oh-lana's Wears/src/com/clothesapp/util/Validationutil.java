@@ -10,10 +10,10 @@ import java.util.Map;
 
 /**
  *
- * @author Rose Khatiwada
- * LMU ID: 23048677
+ * @author Rose Khatiwada LMU ID: 23048677
  */
 public class Validationutil {
+
     Map<Integer, String> map = new HashMap();
 
     private static final Pattern PRODUCTNAME_PATTERN = Pattern.compile("^[a-zA-Z\\s]+$");
@@ -22,7 +22,6 @@ public class Validationutil {
     private static final Pattern COLOR_PATTERN = Pattern.compile("^[a-zA-Z]+$");
     private static final Pattern PRICE_PATTERN = Pattern.compile("^\\d+(\\.\\d{1,2})?$");
     private static final Pattern STOCK_PATTERN = Pattern.compile("^\\d{1,4}$");
-
 
     /**
      * Validates if a string is null or empty.
@@ -100,7 +99,7 @@ public class Validationutil {
         if (!isNullOrEmpty(price) && PRICE_PATTERN.matcher(price).matches()) {
             try {
                 double priceValue = Double.parseDouble(price);
-                return priceValue >= 0.01 && priceValue <= 10000.00;
+                return priceValue >= 0.01 && priceValue <= 100000.00;
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -128,8 +127,6 @@ public class Validationutil {
                 return "Stock must be a number between 0 and 1000.";
             case "price":
                 return "Price must be between 0.01 and 10000.00.";
-            case "description":
-                return "Description must be between 10 and 255 characters and use only allowed symbols.";
             default:
                 return "Invalid " + fieldName;
         }
