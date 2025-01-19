@@ -443,9 +443,6 @@
                           <Color blue="33" green="33" red="33" type="rgb"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFldSearchActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="jCBclothes">
                       <Properties>
@@ -604,9 +601,6 @@
                           <Color blue="99" green="99" red="99" type="rgb"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFldProductCodeActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnAdd">
                       <Properties>
@@ -687,9 +681,6 @@
                           <Color blue="99" green="99" red="99" type="rgb"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFldProductNameActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtFldProductType">
                       <Properties>
@@ -719,9 +710,6 @@
                           <Color blue="99" green="99" red="99" type="rgb"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFldProductTypeActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtFldColor">
                       <Properties>
@@ -751,9 +739,6 @@
                           <Color blue="99" green="99" red="99" type="rgb"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFldColorActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtFldStock">
                       <Properties>
@@ -783,9 +768,6 @@
                           <Color blue="99" green="99" red="99" type="rgb"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFldStockActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtFldPrice">
                       <Properties>
@@ -815,9 +797,6 @@
                           <Color blue="99" green="99" red="99" type="rgb"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFldPriceActionPerformed"/>
-                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1916,9 +1895,6 @@
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFldUserNameActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblLoginForgotPwd">
           <Properties>

@@ -14,7 +14,6 @@ import java.util.List;
  */
 public class SelectionSort {
 
-    //
     public ArrayList<ClothesModel> sortByName(List<ClothesModel> unsortedData, boolean isAsc) {
         ArrayList<ClothesModel> DataToSort = new ArrayList();
         DataToSort.addAll(unsortedData);

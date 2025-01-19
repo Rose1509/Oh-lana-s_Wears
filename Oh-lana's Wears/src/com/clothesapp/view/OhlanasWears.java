@@ -287,11 +287,6 @@ public class OhlanasWears extends javax.swing.JFrame {
         txtFldSearch.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         txtFldSearch.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51), 2), "Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(51, 51, 51))); // NOI18N
         txtFldSearch.setDisabledTextColor(new java.awt.Color(51, 51, 51));
-        txtFldSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldSearchActionPerformed(evt);
-            }
-        });
 
         jCBclothes.setBackground(new java.awt.Color(102, 102, 102));
         jCBclothes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Price(Asc)", "Price(Des)", "Name(A-Z)", "Name(Z-A)", "Code(Asc)", "Code(Des)", " ", " " }));
@@ -359,11 +354,6 @@ public class OhlanasWears extends javax.swing.JFrame {
         txtFldProductCode.setForeground(new java.awt.Color(153, 153, 153));
         txtFldProductCode.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2), "Product Code", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
         txtFldProductCode.setDisabledTextColor(new java.awt.Color(153, 153, 153));
-        txtFldProductCode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldProductCodeActionPerformed(evt);
-            }
-        });
 
         btnAdd.setBackground(new java.awt.Color(102, 102, 102));
         btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -400,55 +390,30 @@ public class OhlanasWears extends javax.swing.JFrame {
         txtFldProductName.setForeground(new java.awt.Color(153, 153, 153));
         txtFldProductName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2), "Product Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
         txtFldProductName.setDisabledTextColor(new java.awt.Color(153, 153, 153));
-        txtFldProductName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldProductNameActionPerformed(evt);
-            }
-        });
 
         txtFldProductType.setBackground(new java.awt.Color(51, 51, 51));
         txtFldProductType.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         txtFldProductType.setForeground(new java.awt.Color(153, 153, 153));
         txtFldProductType.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2), "Product Type", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
         txtFldProductType.setDisabledTextColor(new java.awt.Color(153, 153, 153));
-        txtFldProductType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldProductTypeActionPerformed(evt);
-            }
-        });
 
         txtFldColor.setBackground(new java.awt.Color(51, 51, 51));
         txtFldColor.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         txtFldColor.setForeground(new java.awt.Color(153, 153, 153));
         txtFldColor.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2), "Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
         txtFldColor.setDisabledTextColor(new java.awt.Color(153, 153, 153));
-        txtFldColor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldColorActionPerformed(evt);
-            }
-        });
 
         txtFldStock.setBackground(new java.awt.Color(51, 51, 51));
         txtFldStock.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         txtFldStock.setForeground(new java.awt.Color(153, 153, 153));
         txtFldStock.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2), "Stock", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
         txtFldStock.setDisabledTextColor(new java.awt.Color(153, 153, 153));
-        txtFldStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldStockActionPerformed(evt);
-            }
-        });
 
         txtFldPrice.setBackground(new java.awt.Color(51, 51, 51));
         txtFldPrice.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         txtFldPrice.setForeground(new java.awt.Color(153, 153, 153));
         txtFldPrice.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2), "Price", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
         txtFldPrice.setDisabledTextColor(new java.awt.Color(153, 153, 153));
-        txtFldPrice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldPriceActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnlAdminControlLayout = new javax.swing.GroupLayout(pnlAdminControl);
         pnlAdminControl.setLayout(pnlAdminControlLayout);
@@ -1068,11 +1033,6 @@ public class OhlanasWears extends javax.swing.JFrame {
         txtFldUserName.setForeground(new java.awt.Color(153, 153, 153));
         txtFldUserName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2), "User Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
         txtFldUserName.setDisabledTextColor(new java.awt.Color(153, 153, 153));
-        txtFldUserName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFldUserNameActionPerformed(evt);
-            }
-        });
 
         lblLoginForgotPwd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblLoginForgotPwd.setForeground(new java.awt.Color(153, 153, 153));
@@ -1205,6 +1165,16 @@ public class OhlanasWears extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 // Method to set up the CardLayout and add panels
 
+    /**
+     * Initializes the layout for the application's main frame. Configures a
+     * CardLayout and adds panels with unique identifiers to switch between
+     * screens.
+     *
+     * @param cardLayout the CardLayout used for managing panel navigation
+     * @param pnlLoadingScreen the panel displayed during loading
+     * @param pnlLoginScreen the panel displayed for user login
+     * @param pnlMainScreen the main panel displayed after successful login
+     */
     private void initializeLayout() {
         cardLayout = new java.awt.CardLayout();
         getContentPane().setLayout(cardLayout);
@@ -1224,14 +1194,21 @@ public class OhlanasWears extends javax.swing.JFrame {
         clothesList = new ArrayList();
         registerClothes(new ClothesModel(1234, "Half Shirt", "Shirt", "Blue", 15, 20000), true);
         registerClothes(new ClothesModel(1589, "Half Pant", "Pants", "Black", 20, 44000), true);
-        registerClothes(new ClothesModel(4567, "Off-sholder Sweater", "Sweater", "Red", 5, 19000), true);
+        registerClothes(new ClothesModel(4567, "Off sholder Sweater", "Sweater", "Red", 5, 19000), true);
         registerClothes(new ClothesModel(8974, "Grunch pant", "Pants", "Blue", 10, 8000), true);
-        registerClothes(new ClothesModel(6986, "Over-size hoodie", "Hoodie", "Brown", 8, 60000), true);
+        registerClothes(new ClothesModel(6986, "Half Jacket", "Jacket", "Brown", 8, 60000), true);
     }
 
     // Method to simulate loading progress
     private void startProgress() {
         javax.swing.SwingWorker<Void, Integer> worker = new javax.swing.SwingWorker<>() {
+            /**
+             * Background task to simulate the loading process. Increments the
+             * progress bar over time.
+             *
+             * @return null once the task is completed
+             * @throws Exception if any error occurs during the task execution
+             */
             @Override
             protected Void doInBackground() throws Exception {
                 for (int i = 0; i <= 100; i++) {
@@ -1241,6 +1218,11 @@ public class OhlanasWears extends javax.swing.JFrame {
                 return null;
             }
 
+            /**
+             * Updates the progress bar with the current progress value.
+             *
+             * @param chunks a list of progress values from the background task
+             */
             @Override
             protected void process(java.util.List<Integer> chunks) {
                 int progress = chunks.get(chunks.size() - 1);
@@ -1260,7 +1242,14 @@ public class OhlanasWears extends javax.swing.JFrame {
         cardLayout.show(getContentPane(), screenName);
     }
 
-
+    /**
+     * Handles the login button action event. Validates the user's input for the
+     * username and password. Displays an error message if the username or
+     * password is incorrect or empty. If the credentials are correct, proceeds
+     * to load the main screen.
+     *
+     * @param evt the action event triggered by clicking the login button
+     */
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // Get the username and password input
         String username = txtFldUserName.getText();
@@ -1280,21 +1269,11 @@ public class OhlanasWears extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnLoginActionPerformed
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
-        // TODO add your handling code here:
         pwdFldLogin.setText("");
         txtFldUserName.setText("");
         loadScreen("LoginScreen"); // Load the main screen
 
     }//GEN-LAST:event_btnLogOutActionPerformed
-
-    private void txtFldUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldUserNameActionPerformed
-
-    }//GEN-LAST:event_txtFldUserNameActionPerformed
-
-
-    private void txtFldProductNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldProductNameActionPerformed
-
-    }//GEN-LAST:event_txtFldProductNameActionPerformed
 
     // Helper method to refresh the table model
     private void updateTableModel() {
@@ -1374,7 +1353,7 @@ public class OhlanasWears extends javax.swing.JFrame {
 
             // Validate price
             if (!validator.isValidPrice(priceStr)) {
-                JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Price! Must be between 0.01 and 10000.00.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Price! Must be between 0.01 and 100000.00.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -1385,7 +1364,7 @@ public class OhlanasWears extends javax.swing.JFrame {
 
             // Create a new ClothesModel object with updated details
             ClothesModel updatedClothes = new ClothesModel(productCode, productName, productType, color, stock, price);
-
+            updateTableModel();
             // Update the selected item in the clothesList
             clothesList.set(selectedRow, updatedClothes);
 
@@ -1403,6 +1382,7 @@ public class OhlanasWears extends javax.swing.JFrame {
 
             // Clear the input fields
             clearFields();
+
         } catch (NumberFormatException e) {
             // Handle invalid number input
             JOptionPane.showMessageDialog(pnlAdminControl, "Invalid input. Please check your entries.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -1430,7 +1410,7 @@ public class OhlanasWears extends javax.swing.JFrame {
 
                     //check if the product code matches the entered code
                     if (product.getProductcode() == rcode) {
-                        iterator.remove(); // Remove the product 
+                        iterator.remove(); // Remove the product from arraylist
                         JOptionPane.showMessageDialog(pnlMainScreen, "Successfully removed product!", "Success", JOptionPane.INFORMATION_MESSAGE);
                         found = true;
                         break; // Exit loop after removal
@@ -1452,23 +1432,15 @@ public class OhlanasWears extends javax.swing.JFrame {
 
     //Method to add clothes and populate the table  
     private void registerClothes(ClothesModel clothes, boolean update) {
-        clothesList.add(clothes);
+        clothesList.add(clothes); //Add new clothes to ArrayList
         DefaultTableModel model = (DefaultTableModel) tblClothes.getModel();
         model.addRow(new Object[]{
             clothes.getProductcode(), clothes.getProductname(), clothes.getProducttype(),
             clothes.getColor(), clothes.getStock(), clothes.getPrice()
         });
-
+        updateTableModel();
     }
 
-    private void clearFields() {
-        txtFldProductCode.setText("");
-        txtFldProductName.setText("");
-        txtFldProductType.setText("");
-        txtFldColor.setText("");
-        txtFldStock.setText("");
-        txtFldPrice.setText("");
-    }
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // Retrieve input values from text fields
@@ -1521,7 +1493,7 @@ public class OhlanasWears extends javax.swing.JFrame {
 
                 //validate the price
                 if (!validator.isValidPrice(price)) {
-                    JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Price! Must be between 0.01 and 10000.00.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(pnlAdminControl, "Invalid Price! Must be between 0.01 and 100000.00.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
@@ -1549,6 +1521,9 @@ public class OhlanasWears extends javax.swing.JFrame {
 
                     // Display success message
                     JOptionPane.showMessageDialog(pnlAdminControl, "Clothes added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                    // Clear the fields after successful addition
+                    clearFields();
                 }
 
             } catch (NumberFormatException n) {
@@ -1559,29 +1534,14 @@ public class OhlanasWears extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
-    private void txtFldProductCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldProductCodeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldProductCodeActionPerformed
-
-    private void txtFldProductTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldProductTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldProductTypeActionPerformed
-
-    private void txtFldColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldColorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldColorActionPerformed
-
-    private void txtFldStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldStockActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldStockActionPerformed
-
-    private void txtFldPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldPriceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldPriceActionPerformed
-
-    private void txtFldSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldSearchActionPerformed
+    private void clearFields() {
+        txtFldProductCode.setText("");
+        txtFldProductName.setText("");
+        txtFldProductType.setText("");
+        txtFldColor.setText("");
+        txtFldStock.setText("");
+        txtFldPrice.setText("");
+    }
 
     private void loadListToTable(ArrayList<ClothesModel> list, javax.swing.JTable table) {
         javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) table.getModel();
@@ -1619,6 +1579,7 @@ public class OhlanasWears extends javax.swing.JFrame {
             ArrayList<ClothesModel> sortedList = sort.sortByName(clothesList, false);
             loadListToTable(sortedList, tblClothes);
 
+            // Handle sorting based on Merge
         } else if ("Price(Asc)".equals(selected)) {
             // Sort by Price (Low to High)
             ArrayList<ClothesModel> sortedList = mergeSort.sortByPrice(clothesList, true);
@@ -1629,6 +1590,7 @@ public class OhlanasWears extends javax.swing.JFrame {
             ArrayList<ClothesModel> sortedList = mergeSort.sortByPrice(clothesList, false);
             loadListToTable(sortedList, tblClothes);
 
+            // Handle sorting based on Insertion
         } else if ("Code(Asc)".equals(selected)) {
             // Sort by Product Code (Ascending)
             ArrayList<ClothesModel> sortedList = insertionSort.sortByCode(clothesList, true);

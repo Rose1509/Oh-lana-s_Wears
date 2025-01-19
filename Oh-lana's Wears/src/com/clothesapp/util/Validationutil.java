@@ -5,8 +5,6 @@
 package com.clothesapp.util;
 
 import java.util.regex.Pattern;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
@@ -14,7 +12,6 @@ import java.util.Map;
  */
 public class Validationutil {
 
-    Map<Integer, String> map = new HashMap();
 
     private static final Pattern PRODUCTNAME_PATTERN = Pattern.compile("^[a-zA-Z\\s]+$");
     private static final Pattern PRODUCT_CODE_PATTERN = Pattern.compile("^\\d{4}$");
@@ -90,7 +87,7 @@ public class Validationutil {
 
     /**
      * Validates if the price is a positive number with up to 2 decimal places
-     * and between 0.01 and 10000.00.
+     * and between 0.01 and 100000.00.
      *
      * @param price the price to validate
      * @return true if valid, otherwise false
@@ -126,7 +123,7 @@ public class Validationutil {
             case "stock":
                 return "Stock must be a number between 0 and 1000.";
             case "price":
-                return "Price must be between 0.01 and 10000.00.";
+                return "Price must be between 0.01 and 100000.00.";
             default:
                 return "Invalid " + fieldName;
         }
@@ -164,8 +161,5 @@ public class Validationutil {
 
     }
 
-    public static void main(String[] args) {
-        Validationutil validator = new Validationutil();
-        validator.testValidations();
-    }
+
 }
