@@ -10,10 +10,19 @@ import java.util.List;
 
 /**
  *
- * @author Rose Khatiwada LMU ID: 23048677
+ * @author Rose Khatiwada
+ * LMU ID: 23048677
  */
 public class SelectionSort {
 
+    /**
+     * Sorts a list of clothes by product name using the Selection Sort
+     * algorithm.
+     *
+     * @param unsortedData the list of clothes to sort
+     * @param isAsc true for ascending order, false for descending order
+     * @return a sorted ArrayList of ClothesModel objects
+     */
     public ArrayList<ClothesModel> sortByName(List<ClothesModel> unsortedData, boolean isAsc) {
         ArrayList<ClothesModel> DataToSort = new ArrayList();
         DataToSort.addAll(unsortedData);
