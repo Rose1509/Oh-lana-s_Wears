@@ -10,16 +10,32 @@ import java.util.List;
 
 /**
  *
- * @author Rose Khatiwada LMU ID: 23048677
+ * @author Rose Khatiwada 
+ * LMU ID: 23048677
  */
 public class MergeSort {
 
+    /**
+     * Sorts a list of clothes by price using the Merge Sort algorithm.
+     *
+     * @param unsortedData the list of clothes to sort
+     * @param isAsc true for ascending order, false for descending order
+     * @return a sorted ArrayList of ClothesModel objects
+     */
     public ArrayList<ClothesModel> sortByPrice(List<ClothesModel> unsortedData, boolean isAsc) {
         ArrayList<ClothesModel> clothesList = new ArrayList<>(unsortedData);
         mergeSort(clothesList, 0, clothesList.size() - 1, isAsc);
         return clothesList;
     }
 
+    /**
+     * Recursively splits and sorts the list using the Merge Sort algorithm.
+     *
+     * @param list the list to sort
+     * @param left the starting index of the portion to sort
+     * @param right the ending index of the portion to sort
+     * @param isAsc true for ascending order, false for descending order
+     */
     private void mergeSort(ArrayList<ClothesModel> list, int left, int right, boolean isAsc) {
         if (left >= right) {
             return;
@@ -35,6 +51,15 @@ public class MergeSort {
         merge(list, left, mid, right, isAsc);
     }
 
+    /**
+     * Merges two sorted sublists into a single sorted sublist.
+     *
+     * @param list the list to merge
+     * @param left the starting index of the first sublist
+     * @param mid the ending index of the first sublist
+     * @param right the ending index of the second sublist
+     * @param isAsc true for ascending order, false for descending order
+     */
     private void merge(ArrayList<ClothesModel> list, int left, int mid, int right, boolean isAsc) {
         ArrayList<ClothesModel> temp = new ArrayList<>();
         int i = left, j = mid + 1;
