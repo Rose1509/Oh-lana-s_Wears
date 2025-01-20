@@ -10,10 +10,19 @@ import java.util.List;
 
 /**
  *
- * @author Rose Khatiwada LMU ID: 23048677
+ * @author Rose Khatiwada 
+ * LMU ID: 23048677
  */
 public class InsertionSort {
 
+    /**
+     * Sorts a list of clothes by product code using the Insertion Sort
+     * algorithm.
+     *
+     * @param unsortedData the list of clothes to sort
+     * @param isAsc true for ascending order, false for descending order
+     * @return a sorted ArrayList of ClothesModel objects
+     */
     public ArrayList<ClothesModel> sortByCode(List<ClothesModel> unsortedData, boolean isAsc) {
         ArrayList<ClothesModel> DataToSort = new ArrayList<>(unsortedData);
 
@@ -37,4 +46,3 @@ public class InsertionSort {
     }
 
 }
-
