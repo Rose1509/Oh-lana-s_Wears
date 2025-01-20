@@ -10,10 +10,22 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Rose Khatiwada LMU ID: 23048677
+ * @author Rose Khatiwada
+ * LMU ID: 23048677
  */
 public class BinarySearch {
 
+    /**
+     * Performs a binary search to find a product by its name in a sorted list
+     * of clothes.
+     *
+     * @param searchValue the name of the product to search for
+     * @param clothesList the sorted list of clothes to search within
+     * @param low the starting index of the current search range
+     * @param high the ending index of the current search range
+     * @return the ClothesModel object if found, or null if the product does not
+     * exist
+     */
     public ClothesModel searchByNameProduct(
             String searchValue,
             List<ClothesModel> clothesList,
